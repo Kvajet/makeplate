@@ -246,7 +246,7 @@ clean:
 
 \$(BUILD_DIR)/%.o: src/%.cpp
 	\$(MKDIR) \$(BUILD_DIR)
-	\$(CXX) \$(CXXFLAGS) -c \$< -o \$@
+	\$(CXX) \$(CXXVERSION) \$(CXXFLAGS) -c \$< -o \$@ \$(LIBS)
 
 # .o patterns
 ${INCLUDES}" > Makefile
