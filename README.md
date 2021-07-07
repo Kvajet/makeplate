@@ -23,4 +23,4 @@ Sure, feel free to take it and modify it as you wish.
 
 ## Warning
 
-This program is tested by me. BUT, there is possibility that makeplate.sh contains bugs and causes some unwanted behaviour. There the usage of this software is your choice and I do not take any responsibility for any caused damage. I don't think it will delete source code or anything, it's replacing Makefile and creates main.c/main.cpp. But I had to told it.
+This program is tested by me. BUT, there is possibility that makeplate.sh contains bugs and causes some unwanted behaviour. Therefore the usage of this software is your choice and I do not take any responsibility for any caused damage. I don't think it will delete source code or anything, it's replacing Makefile and creates main.c/main.cpp. But I had to say it.
