@@ -3,9 +3,9 @@
 ARGS_DATA="\
 none:generates dependencies based on on files in \"src\" source files;\
 -help:prints help;\
--full:initializes Makefile, \"src\" folder and main.cpp;\
--full-c:  initializes Makefile, \"src\" folder and main.c;\
--full-cpp:initializes Makefile, \"src\" folder and main.cpp;\
+-full:initializes Makefile, \"src\" folder, main.cpp and .gitignore;\
+-full-c:initializes Makefile, \"src\" folder,main.c and .gitignore;\
+-full-cpp:initializes Makefile, \"src\" folder, main.cpp and .gitignore;\
 -c:creates .c or .cpp file based on main extension, also tries to find .h file and if found, generates include;\
 -h:creates .h file, creates class if name starts with C, creates struct if name starts with T;\
 -ch:creates .c/.cpp and .h file with include, creates class if name start with C, creates struct if name starts with T\
@@ -94,6 +94,22 @@ dir_exists() {
     then
         error "\"src\" directory doesn't exist."
     fi
+}
+
+create_gitignore() {
+    if [ -f ".gitignore" ]
+    then
+        error ".gitignore already exists."
+    fi
+
+    TARGET=$( basename "$PWD" )
+
+    printf "\
+.vscode
+examples
+build
+$TARGET
+" > ".gitignore"
 }
 
 main_exists() {
@@ -343,14 +359,17 @@ parameters() {
         "-full")
             validate_argument_options "$2" 0 0
             param-full-cpp
+            create_gitignore
             ;;
         "-full-c")
             validate_argument_options "$2" 0 0
             param-full-c
+            create_gitignore
             ;;
         "-full-cpp")
             validate_argument_options "$2" 0 0
             param-full-cpp
+            create_gitignore
             ;;
         *)
             validate_argument_options "$2" 0 0
